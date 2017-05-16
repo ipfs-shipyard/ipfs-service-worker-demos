@@ -3,10 +3,10 @@
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker-bundle.js')
     .then((registration) => {
-      console.log('registered')
+      console.log('-> Registered the service worker successfuly')
     })
     .catch((err) => {
-      console.log('failed to register:', err)
+      console.log('-> Failed to register:', err)
     })
 }
 

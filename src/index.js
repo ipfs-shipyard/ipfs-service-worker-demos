@@ -2,23 +2,29 @@
 
 'use strict'
 
+const IPFS = require('ipfs')
+let node
+
 self.addEventListener('install', (event) => {
   console.log('Installing')
 
-  // event.waitUntil(Promise.resolve().then(() => {
-  //  console.log('Install complete')
-  // }))
+  // event.waitUntil(self.skipWaiting())
 
-  event.waitUntil(self.skipWaiting())
+  event.waitUntil(() => {
+    return new Promise((resolve, reject) => {
+      node = new IPFS()
+      node.on('ready', () => {
+        console.log('js-ipfs node is ready')
+        resolve()
+      })
+    })
+  })
 })
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim())
-  /*
   event.waitUntil(Promise.resolve().then(() => {
     console.log('Activate complete')
   }))
-  */
 })
 
 self.addEventListener('fetch', (event) => {

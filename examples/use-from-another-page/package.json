@@ -8,5 +8,9 @@
     "build": "webpack"
   },
   "author": "David Dias <mail@daviddias.me>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^2.5.1"
+  }
 }
