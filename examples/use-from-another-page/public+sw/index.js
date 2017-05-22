@@ -13,6 +13,8 @@ if ('serviceWorker' in navigator) {
 document.querySelector('#show').addEventListener('click', () => {
   const multihash = document.querySelector('#input').value
   let imgElement = document.createElement('img')
+
+  // imgElement.src = multihash
   imgElement.src = '/ipfs/' + multihash
   // imgElement.src = 'https://ipfs.io/ipfs/' + multihash
   document.querySelector('#display').appendChild(imgElement)

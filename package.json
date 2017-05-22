@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/ipfs/ipfs-service-worker#readme",
   "dependencies": {
+    "bl": "^1.2.1",
     "ipfs": "^0.23.1"
   }
 }
