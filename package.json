@@ -1,0 +1,29 @@
+{
+  "name": "ipfs-service-worker",
+  "version": "0.0.0",
+  "description": "Run an IPFS node inside a service worker and serve all your IPFS Urls directly from IPFS!",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipfs/ipfs-service-worker.git"
+  },
+  "keywords": [
+    "IPFS",
+    "Service",
+    "Worker",
+    "Distributed"
+  ],
+  "author": "David Dias <daviddias@ipfs.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ipfs/ipfs-service-worker/issues"
+  },
+  "homepage": "https://github.com/ipfs/ipfs-service-worker#readme",
+  "dependencies": {
+    "bl": "^1.2.1",
+    "ipfs": "^0.23.1"
+  }
+}
