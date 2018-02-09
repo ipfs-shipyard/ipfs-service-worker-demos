@@ -9,8 +9,11 @@
   },
   "author": "David Dias <mail@daviddias.me>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "ipfs-postmsg-proxy": "^2.3.0"
+  },
   "devDependencies": {
+    "standard": "^10.0.3",
     "webpack": "^2.5.1"
   }
 }

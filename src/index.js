@@ -3,7 +3,8 @@
 'use strict'
 
 const IPFS = require('ipfs')
-const bl = require('bl')
+const { createProxyServer } = require('ipfs-postmsg-proxy')
+
 let node
 
 self.addEventListener('install', (event) => {
@@ -35,30 +36,22 @@ self.addEventListener('fetch', (event) => {
 
   console.log('Handling fetch event for', event.request.url)
 
-  const headers = {
-    status: 200,
-    statusText: 'OK',
-    headers: {}
+  const multihash = event.request.url.split('/ipfs/')[1]
+  event.respondWith(catAndRespond(multihash))
+})
+
+async function catAndRespond (hash) {
+  const data = await node.files.cat(hash)
+  const headers = { status: 200, statusText: 'OK', headers: {} }
+  return new Response(data, headers)
+}
+
+createProxyServer(() => node, {
+  addListener: self.addEventListener.bind(self),
+  removeListener: self.removeEventListener.bind(self),
+  async postMessage (data) {
+    // TODO: post back to the client that sent the message?
+    const clients = await self.clients.matchAll()
+    clients.forEach(client => client.postMessage(data))
   }
-
-  event.respondWith(new Promise((resolve, reject) => {
-    const multihash = event.request.url.split('/ipfs/')[1]
-
-    node.files.cat(multihash, (err, stream) => {
-      if (err) {
-        console.log('Could not fetch multihash', multihash)
-        return
-      }
-
-      stream.pipe(bl((err, data) => {
-        if (err) {
-          return console.log(err)
-        }
-
-        const response = new Response(data, headers)
-
-        resolve(response)
-      }))
-    })
-  }))
 })
