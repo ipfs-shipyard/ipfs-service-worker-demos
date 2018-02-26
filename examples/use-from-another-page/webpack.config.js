@@ -1,7 +1,10 @@
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'service-worker-bundle': './src/index.js',
+    bundle: './public+sw/index.js'
+  },
   output: {
-    filename: 'public+sw/service-worker-bundle.js'
+    filename: 'public+sw/[name].js'
   },
   node: {
     fs: 'empty',
