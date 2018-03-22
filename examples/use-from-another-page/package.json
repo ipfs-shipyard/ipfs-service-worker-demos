@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "builddev": "webpack -w --mode development",
   },
   "author": "David Dias <mail@daviddias.me>",
   "license": "MIT",
@@ -14,6 +15,6 @@
   },
   "devDependencies": {
     "standard": "^10.0.3",
-    "webpack": "^2.5.1"
+    "webpack": "^4.2.0",
   }
 }
