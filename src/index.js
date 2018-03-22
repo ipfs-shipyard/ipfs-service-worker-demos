@@ -13,19 +13,33 @@ self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting())
 })
 
+
+async function ipfsstart(verbose) {
+    /*    Just start IPFS - promise resolves when its started
+     */
+    const self = this;
+    return new Promise((resolve, reject) => {
+        node = new IPFS({
+            config: {
+                Addresses: {
+                    Swarm: []
+                }
+            }
+        });
+        node.on('ready', () => { resolve(); });
+        node.on('error', (err) => reject(err));
+    })
+    .then(() => node.version())
+    .then((version) => console.log('IPFS READY',version))
+    .catch((err) => {
+        console.log("Error caught in ipfsstart");
+        throw(err);
+    });
+}
+
 self.addEventListener('activate', (event) => {
   console.log('activate step')
-
-  node = new IPFS({
-    config: {
-      Addresses: {
-        Swarm: []
-      }
-    }
-  })
-  node.on('ready', () => console.log('js-ipfs node is ready'))
-  node.on('error', (err) => console.log('js-ipfs node errored', err))
-
+  ipfsstart();  // Ignore promise
   event.waitUntil(self.clients.claim())
 })
 
@@ -41,6 +55,7 @@ self.addEventListener('fetch', (event) => {
 })
 
 async function catAndRespond (hash) {
+  if (!node) await ipfsstart();
   const data = await node.files.cat(hash)
   const headers = { status: 200, statusText: 'OK', headers: {} }
   return new Response(data, headers)
