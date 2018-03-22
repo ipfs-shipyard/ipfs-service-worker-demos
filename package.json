@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/ipfs/ipfs-service-worker#readme",
   "dependencies": {
-    "ipfs": "^0.27.7",
-    "ipfs-postmsg-proxy": "^2.3.0"
+    "ipfs": "^0.28.2",
+    "ipfs-postmsg-proxy": "^2.3.0",
   },
   "devDependencies": {
     "standard": "^10.0.3"

@@ -86,3 +86,12 @@ if ('serviceWorker' in navigator) {
     })
 }
 ```
+### Installation and testing
+
+* Clone the repo from here
+* cd to ipfs-service-worker
+* npm install
+* cd examples
+* npm run build
+* cp -r public+sw/* dist/public+sw
+

@@ -37,3 +37,4 @@ jspm_packages
 .node_repl_history
 examples/use-from-another-page/public+sw/bundle.js
 examples/use-from-another-page/public+sw/service-worker-bundle.js
+examples/use-from-another-page/dist
