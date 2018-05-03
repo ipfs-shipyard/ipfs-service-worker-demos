@@ -42,12 +42,23 @@ The service worker listens for ['fetch' events](https://developer.mozilla.org/en
 ```js
 self.addEventListener('fetch', (event) => {
   const hash = event.request.url.split('/ipfs/')[1]
-  event.respondWith(catAndRespond(hash))
+  event.respondWith(getFile(hash))
 })
 
-async function catAndRespond (hash) {
-  const data = await ipfs.files.cat(hash)
-  return new Response(data, { status: 200, statusText: 'OK', headers: {} })
+async function getFile (hash) {
+  // Try to get the file from the service worker cache API
+  try {
+    const cachedContent = await caches.match(multihash)
+    if (cachedContent) {
+      console.log(`Browser requested ${multihash}, trying to find it in the content cached from IPFS.`)
+      return cachedContent
+    }
+  } catch (error) {
+    console.log(error)
+  }
+  // Try to get file from the IPFS node
+  console.log(`Browser is requesting ${multihash}, trying to get files from IPFS.`)
+  return getFileFromIpfs(multihash)
 }
 ```
 
@@ -86,3 +97,13 @@ if ('serviceWorker' in navigator) {
     })
 }
 ```
+
+### Instalation and testing
+
+* Clone the repo from here
+* `$ cd ipfs-service-worker`
+* `$ npm install`
+* `$ cd examples/use-from-another-page`
+* `$ npm install`
+* `$ npm run build`
+* Use a http server such as node [http-server](https://www.npmjs.com/package/http-server) `$ http-server public+sw`

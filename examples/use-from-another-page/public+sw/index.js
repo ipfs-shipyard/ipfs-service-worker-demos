@@ -27,10 +27,10 @@ document.querySelector('#id').addEventListener('click', async () => {
 
 document.querySelector('#show').addEventListener('click', () => {
   const multihash = document.querySelector('#input').value
-  let imgElement = document.createElement('img')
 
-  // imgElement.src = multihash
-  imgElement.src = '/ipfs/' + multihash
-  // imgElement.src = 'https://ipfs.io/ipfs/' + multihash
-  document.querySelector('#display').appendChild(imgElement)
+  if (multihash && multihash.length > 3) {
+    window.location.href = `/ipfs/${multihash}`
+  } else {
+    alert(`invalid multihash received: ${multihash}`)
+  }
 })
