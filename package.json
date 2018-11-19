@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Run an IPFS node inside a service worker and serve all your IPFS Urls directly from IPFS!",
   "main": "src/index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,10 +24,10 @@
   },
   "homepage": "https://github.com/ipfs/ipfs-service-worker#readme",
   "dependencies": {
-    "ipfs": "^0.27.7",
-    "ipfs-postmsg-proxy": "^2.3.0"
+    "ipfs": "^0.33.1",
+    "ipfs-postmsg-proxy": "^3.1.1"
   },
   "devDependencies": {
-    "standard": "^10.0.3"
+    "standard": "^12.0.1"
   }
 }

@@ -3,17 +3,21 @@
   "version": "0.0.0",
   "description": "",
   "main": "src/index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 9042 .",
     "build": "webpack"
   },
   "author": "David Dias <mail@daviddias.me>",
   "license": "MIT",
   "dependencies": {
-    "ipfs-postmsg-proxy": "^2.3.0"
+    "ipfs-postmsg-proxy": "^3.1.1"
   },
   "devDependencies": {
-    "standard": "^10.0.3",
-    "webpack": "^2.5.1"
+    "http-server": "^0.11.1",
+    "standard": "^12.0.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "3.1.2"
   }
 }
