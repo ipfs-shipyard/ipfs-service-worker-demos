@@ -1,3 +1,16 @@
+> [!CAUTION]
+>
+> # ⛔️ DEPRECATED
+>
+> _This example is out of date and not be maintained anymore._
+>
+> This is an old PoC from 2017-2018.
+>
+> See the modern end-to-end example of using Helia in `ServiceWorker` at <https://github.com/ipfs/service-worker-gateway>
+
+---
+
+
 # Demo: use `js-ipfs` within a Service Worker
 
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
