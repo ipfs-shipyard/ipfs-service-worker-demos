@@ -1,11 +1,12 @@
-# ⛔️ DEPRECATED
-
-_This example is out of date and will not be maintained._
-
-This is an old PoC from 2017-2018. 
-
-See the modern end-to-end example of using js-ipfs node in `SharedWorker` from `ServiceWorker` at [`ipfs/js-ipfs/examples/browser-service-worker`](https://github.com/ipfs/js-ipfs/tree/master/examples/browser-service-worker)
-
+> [!CAUTION]
+>
+> # ⛔️ DEPRECATED
+>
+> _This example is out of date and not be maintained anymore._
+>
+> This is an old PoC from 2017-2018.
+>
+> See the modern end-to-end example of using Helia in `ServiceWorker` at <https://github.com/ipfs/service-worker-gateway>
 
 ---
 
